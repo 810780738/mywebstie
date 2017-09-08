@@ -25,16 +25,16 @@
 			<label class="lbl-3"> </label>
 		</div>
 	<div class="avtar"><img src="images/avtar.png" /></div>
-			<form>
-				<input type="text" class="text" placeholder="请输入用户名">
-				<input type="password" placeholder="请输入密码">
-			</form>
-			<div>
-				<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/register" style="text-align: right;color:white;">注册?</a>
-			</div>
-	<div class="signin">
-		<input type="submit" value="Login" >
-	</div>
+	<form action="/checkLogin" method="post">
+		<input type="text" class="text" placeholder="请输入用户名">
+		<input type="password" placeholder="请输入密码">
+		<div>
+			<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/register" style="text-align: right;color:white;">注册?</a>
+		</div>
+		<div class="signin">
+			<input type="submit" value="Login" >
+		</div>
+	</form>
 </div>
 </body>
 </html>

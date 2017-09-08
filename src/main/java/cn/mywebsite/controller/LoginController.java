@@ -2,7 +2,9 @@ package cn.mywebsite.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,5 +37,12 @@ public class LoginController {
 	public ModelAndView register(){
 		logger.info("进入注册页面。。。");
 		return new ModelAndView("public/register");
+	}
+	
+	
+	@RequestMapping("/checkLogin")
+	public ModelAndView checkLogin(@RequestParam("")String usrename,@RequestParam("password")String password,  ModelMap map){
+		System.out.println(usrename+password);
+		return null;
 	}
 }
