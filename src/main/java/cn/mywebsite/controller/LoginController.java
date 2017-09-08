@@ -41,8 +41,7 @@ public class LoginController {
 	
 	
 	@RequestMapping("/checkLogin")
-	public ModelAndView checkLogin(@RequestParam("")String usrename,@RequestParam("password")String password,  ModelMap map){
-		System.out.println(usrename+password);
+	public ModelAndView checkLogin(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,  ModelMap map){
 		return null;
 	}
 }

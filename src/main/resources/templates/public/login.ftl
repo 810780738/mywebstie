@@ -26,8 +26,8 @@
 		</div>
 	<div class="avtar"><img src="images/avtar.png" /></div>
 	<form action="/checkLogin" method="post">
-		<input type="text" class="text" placeholder="请输入用户名">
-		<input type="password" placeholder="请输入密码">
+		<input type="text" class="text"  name="userName" placeholder="请输入用户名">
+		<input type="password" name="passWord" placeholder="请输入密码">
 		<div>
 			<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/register" style="text-align: right;color:white;">注册?</a>
 		</div>
