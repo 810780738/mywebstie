@@ -1,8 +1,8 @@
 package cn.mywebsite.data.connection;
 
-import javax.sql.DataSource;
+import java.sql.Connection;
 
-import com.mysql.jdbc.Connection;
+import javax.sql.DataSource;
 
 /**
  * 事物管理（单列模式)
@@ -10,10 +10,12 @@ import com.mysql.jdbc.Connection;
  *
  */
 public class SingleThreadConnectionHolder {
-	private static ThreadLocal<ConnectionHolder> threadLocal = new ThreadLocal<ConnectionHolder>();
+	private static volatile ThreadLocal<ConnectionHolder> threadLocal = new ThreadLocal<ConnectionHolder>();
+	
+	
+	private SingleThreadConnectionHolder(){}
 	
 	private static ConnectionHolder getConnectionHolder() {
-		
 		ConnectionHolder connectionHolder = threadLocal.get();
 		if (connectionHolder == null) {
 			connectionHolder = new ConnectionHolder();

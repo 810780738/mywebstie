@@ -6,7 +6,14 @@ public class UserInfo {
 	private String userPassword;
 	private String sex;
 	private String age;
+	public String getCreateTime() {
+		return CreateTime;
+	}
+	public void setCreateTime(String createTime) {
+		CreateTime = createTime;
+	}
 	private String address;
+	private String CreateTime;
 	public String getUserName() {
 		return userName;
 	}
@@ -43,7 +50,8 @@ public class UserInfo {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public UserInfo(String user_id, String userName, String userPassword, String sex, String age, String address) {
+	public UserInfo(String user_id, String userName, String userPassword, String sex, String age, String address,
+			String createTime) {
 		super();
 		this.user_id = user_id;
 		this.userName = userName;
@@ -51,11 +59,12 @@ public class UserInfo {
 		this.sex = sex;
 		this.age = age;
 		this.address = address;
+		CreateTime = createTime;
 	}
 	@Override
 	public String toString() {
 		return "UserInfo [user_id=" + user_id + ", userName=" + userName + ", userPassword=" + userPassword + ", sex="
-				+ sex + ", age=" + age + ", address=" + address + "]";
+				+ sex + ", age=" + age + ", address=" + address + ", CreateTime=" + CreateTime + "]";
 	}
 	
 }

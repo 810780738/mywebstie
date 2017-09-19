@@ -1,10 +1,9 @@
 package cn.mywebsite.data.connection;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
-
-import com.mysql.jdbc.Connection;
 
 /**
  * 事物管理
