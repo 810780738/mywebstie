@@ -22,4 +22,5 @@ public class IndexController {
 		int addUser = userManage.addUser(dataSource);
 		return String.valueOf(addUser);
 	}
+	
 }

@@ -67,4 +67,18 @@ public class UserInfo {
 				+ sex + ", age=" + age + ", address=" + address + ", CreateTime=" + CreateTime + "]";
 	}
 	
+	
+	
+	public UserInfo(String userName, String userPassword, String sex, String age, String address) {
+		super();
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.sex = sex;
+		this.age = age;
+		this.address = address;
+	}
+	public UserInfo() {
+		super();
+	}
+	
 }

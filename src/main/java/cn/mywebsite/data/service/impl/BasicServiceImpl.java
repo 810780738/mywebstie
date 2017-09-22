@@ -57,4 +57,35 @@ public class BasicServiceImpl implements BasicService {
 		return update;
 	}
 
+	@Override
+	public <T> int insertUser(Class<T> clazz, String sql, Object... args) {
+		int update = 0;
+		try {
+			update = jdbcTemplet.update(sql,args);
+		} catch (DataAccessException e) {
+			System.err.println("插入数据发生异常"+e);
+		}
+		return update;
+	}
+
+	@Override
+	public <T> List<Map<String, Object>> baseSelect(Class<T> clazz, String sql, Object... args) {
+		try {
+			return jdbcTemplet.queryForList(sql,args);
+		} catch (DataAccessException e) {
+			System.err.println("查询数据出现异常"+e);
+		}
+		return null;
+	}
+
+	@Override
+	public <T> T findById(Class<T> clazz, String sql, Object id) {
+		try {
+			return jdbcTemplet.queryForObject(sql, new Object[]{id}, clazz);
+		} catch (DataAccessException e) {
+			System.err.println("根据id查询出错"+e);
+		}
+		return null;
+	}
+
 }

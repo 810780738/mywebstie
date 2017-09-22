@@ -23,7 +23,6 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	public ModelAndView login(){
-		logger.info("进入登录页面。。。");
 		return new ModelAndView("public/login");
 	}
 	
@@ -35,7 +34,6 @@ public class LoginController {
 	 */
 	@RequestMapping("/register")
 	public ModelAndView register(){
-		logger.info("进入注册页面。。。");
 		return new ModelAndView("public/register");
 	}
 	

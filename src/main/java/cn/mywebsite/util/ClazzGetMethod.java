@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * ClassName:ClazzGetMethod
  * ClassDescription:放射获取实体类中的get方法的值
@@ -25,10 +24,15 @@ public class ClazzGetMethod {
 		Field[] field = model.getClass().getDeclaredFields();//获取实体类中的所有的属性返回Field数组
 		//遍历所有的属性
 		List<Object> arrayList = new ArrayList<Object>();
-		for (int i = 0; i < field.length; i++) {
-			String name = field[i].getName();
-			Object invokeGet = invokeGet(model,name);
-			arrayList.add(invokeGet);
+		try {
+			for (int i = 0; i < field.length; i++) {
+				String name = field[i].getName();
+				Object invokeGet = invokeGet(model,name);
+				if(invokeGet != null && !invokeGet.equals("".trim()))
+					arrayList.add(invokeGet);
+			}
+		} catch (Exception e) {
+			System.err.println("遍历获取所有属性出错"+e);
 		}
 		return arrayList;
 	}
@@ -46,6 +50,20 @@ public class ClazzGetMethod {
 	       return null;  
 	}
 	
+	//获取set方法
+	public static <T> Method setSetMethod(Class<T> clazz,String fieldName){
+		  StringBuffer sb = new StringBuffer();  
+	       sb.append("set");
+	       sb.append(fieldName.substring(0, 1).toUpperCase());  
+	       sb.append(fieldName.substring(1));  
+	       try {  
+	           return clazz.getMethod(sb.toString());  
+	       } catch (Exception e) {  
+	       }  
+	       return null;  
+	}
+	
+	
 	/**
 	 * MethodDescription:获取值
 	 * @author 朱守明
@@ -58,9 +76,12 @@ public class ClazzGetMethod {
         Method method = getGetMethod(object.getClass(), fieldName);  
         try {  
             return method.invoke(object, new Object[0]);  
-        } catch (Exception e) {  
+        } catch (Exception e) {
             e.printStackTrace();  
         }  
         return null;  
     }
+	
+	
+	
 }
