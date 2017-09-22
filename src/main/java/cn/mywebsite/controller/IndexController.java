@@ -19,8 +19,8 @@ public class IndexController {
 	
 	@RequestMapping("/addUser")
 	public String index(){
-		int addUser = userManage.addUser(dataSource);
-		return String.valueOf(addUser);
+//		int addUser = userManage.addUser(dataSource);
+		return "";
 	}
 	
 }

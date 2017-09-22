@@ -19,7 +19,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<form role="form" action="/login" method="post" class="registration-form">
+                        	<form role="form" action="/register" method="post" class="registration-form">
                         		<fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
@@ -32,16 +32,16 @@
 		                            </div>
 		                            <div class="form-bottom">
 				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-first-name">姓</label>
-				                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+				                    		<label class="sr-only" for="form-first-name">登录名</label>
+				                        	<input type="text" name="loginname" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
 				                        </div>
 				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-last-name">名</label>
-				                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+				                        	<label class="sr-only" for="form-last-name">姓名</label>
+				                        	<input type="text" name="userName" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-about-yourself">介绍自己</label>
-				                        	<textarea name="form-about-yourself" placeholder="About yourself..." 
+				                        	<textarea name="aboutuser" placeholder="About yourself..." 
 				                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
 				                        </div>
 				                        <button type="button" class="btn btn-next">下一步</button>
@@ -61,11 +61,11 @@
 		                            <div class="form-bottom">
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-email">Email地址</label>
-				                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+				                        	<input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
 				                        </div>
 				                        <div class="form-group">
 				                    		<label class="sr-only" for="form-password">密码</label>
-				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        	<input type="password" name="userPassword" placeholder="Password..." class="form-password form-control" id="form-password">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-repeat-password">确认密码</label>

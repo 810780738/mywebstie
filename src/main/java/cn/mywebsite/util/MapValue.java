@@ -1,8 +1,11 @@
 package cn.mywebsite.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.util.StringUtils;
 
 /**
  * ClassName:MapValue
@@ -30,6 +33,18 @@ public class MapValue {
 			}
 		}
 		return mapKey;
+	}
+	
+	public final static <T> Map<String,String>  getArrayValue(Map<String, String[]> parameterMap){
+		Map<String,String> map = new HashMap<String,String>();
+		for (String key : parameterMap.keySet()) {
+			String[] arrays = parameterMap.get(key);
+			if(arrays.length <= 1) {
+				String value = StringUtils.arrayToCommaDelimitedString(arrays);
+				map.put(key, value);
+			}
+		}
+		return map;
 	}
 	
 }

@@ -3,17 +3,38 @@ package cn.mywebsite.domain;
 public class UserInfo {
 	private String user_id;
 	private String userName;
+	private String loginname;
+	private String email;
+	private String aboutuser;
 	private String userPassword;
 	private String sex;
 	private String age;
+	private String address;
+	private String CreateTime;
+	public String getLoginname() {
+		return loginname;
+	}
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAboutuser() {
+		return aboutuser;
+	}
+	public void setAboutuser(String aboutuser) {
+		this.aboutuser = aboutuser;
+	}
 	public String getCreateTime() {
 		return CreateTime;
 	}
 	public void setCreateTime(String createTime) {
 		CreateTime = createTime;
 	}
-	private String address;
-	private String CreateTime;
 	public String getUserName() {
 		return userName;
 	}
@@ -76,6 +97,13 @@ public class UserInfo {
 		this.sex = sex;
 		this.age = age;
 		this.address = address;
+	}
+	
+	
+	public UserInfo(String userName, String userPassword) {
+		super();
+		this.userName = userName;
+		this.userPassword = userPassword;
 	}
 	public UserInfo() {
 		super();

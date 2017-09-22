@@ -1,10 +1,23 @@
 package cn.mywebsite.manage.service;
 
-import javax.sql.DataSource;
+
+
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import cn.mywebsite.domain.UserInfo;
+
 @Service
 public interface UserManage {
-	public int addUser(DataSource dataSource);
+	//添加用户
+	public int addUser(Map<String, String> map);
+	
+	/**
+	 * 用户校验
+	 * @param userInfo
+	 * @return
+	 */
+	public boolean checkUser(UserInfo userInfo);
+	
 }

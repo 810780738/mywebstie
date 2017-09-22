@@ -62,9 +62,12 @@ public class InterceptorController {
 				Map<String, Object> map = (Map<String, Object>) arg;
 				allParams.add(map);
 			}else if (arg instanceof HttpServletRequest) {
+				//校验request请求
 				HttpServletRequest request = (HttpServletRequest) arg;
 				if (isLoginRequired(method)) {
+					//校验是否登录
 					if (!isLogin(request)) {
+						//未登录
 //						result = new JsonResult(ResultCode);
 					}
 				}
@@ -90,9 +93,7 @@ public class InterceptorController {
 		}
 		
 		long end = System.currentTimeMillis();
-		System.out.println("请求耗时:"+(end-startTime));
-		
-		
+		System.out.println("请求耗时:"+(end-startTime)+"毫秒");
 		return result;
 	}
 	
@@ -103,7 +104,6 @@ public class InterceptorController {
 		if (!evn.equals("prod")) {
 			return false;
 		}
-		
 		boolean result = true;
 		
 //		if (method.isAnnotationPresent(Permission.class)) {
@@ -114,6 +114,7 @@ public class InterceptorController {
 	
 	//判断是否已经登陆 （待完善）
 	public boolean isLogin(HttpServletRequest request){
+		
 		return true;
 	}
 	
