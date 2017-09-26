@@ -23,7 +23,7 @@
                         		<fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>步骤 1 / 2</h3>
+		                        			<h3>步骤  1/2</h3>
 		                            		<p>Tell us who you are:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -33,15 +33,15 @@
 		                            <div class="form-bottom">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="form-first-name">登录名</label>
-				                        	<input type="text" name="loginname" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+				                        	<input type="text" name="loginname" placeholder="登录名" class="form-first-name form-control" id="form-first-name">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-last-name">姓名</label>
-				                        	<input type="text" name="userName" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+				                        	<input type="text" name="userName" placeholder="姓名" class="form-last-name form-control" id="form-last-name">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-about-yourself">介绍自己</label>
-				                        	<textarea name="aboutuser" placeholder="About yourself..." 
+				                        	<textarea name="aboutuser" placeholder="介绍自己" 
 				                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
 				                        </div>
 				                        <button type="button" class="btn btn-next">下一步</button>
@@ -51,7 +51,7 @@
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Step 2 / 2</h3>
+		                        			<h3>步骤  2/2</h3>
 		                            		<p>设置登录名:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -65,11 +65,11 @@
 				                        </div>
 				                        <div class="form-group">
 				                    		<label class="sr-only" for="form-password">密码</label>
-				                        	<input type="password" name="userPassword" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        	<input type="password" name="userPassword" placeholder="密码" class="form-password form-control" id="form-password">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-repeat-password">确认密码</label>
-				                        	<input type="password" name="form-repeat-password" placeholder="Repeat password..." 
+				                        	<input type="password" name="form-repeat-password" placeholder="确认密码" 
 				                        				class="form-repeat-password form-control" id="form-repeat-password">
 				                        </div>
 				                       <button type="button" class="btn btn-previous">返回上一步</button>

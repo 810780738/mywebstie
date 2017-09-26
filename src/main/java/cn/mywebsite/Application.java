@@ -8,19 +8,20 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 
 @SpringBootApplication
-public class Application implements EmbeddedServletContainerCustomizer{
+public class Application implements EmbeddedServletContainerCustomizer {
 
 	public static Log logger = LogFactory.getLog(Application.class);
-	
+
 	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
 		SpringApplication.run(Application.class, args);
-		logger.info("启动成功!");
+		long endTime = System.currentTimeMillis();
+		logger.info("启动成功!耗时：" + (endTime - startTime) + "毫秒");
 	}
 
 	@Override
 	public void customize(ConfigurableEmbeddedServletContainer container) {
-		container.setPort(8088);//修改内置tomcat启动端口
+		container.setPort(8088);// 修改内置tomcat启动端口
 	}
-	
-	
+
 }

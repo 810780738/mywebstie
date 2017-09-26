@@ -1,6 +1,8 @@
 package cn.mywebsite.domain;
 
+
 public class UserInfo {
+	
 	private String user_id;
 	private String userName;
 	private String loginname;

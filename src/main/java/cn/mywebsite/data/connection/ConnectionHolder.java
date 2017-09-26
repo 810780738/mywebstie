@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
 
+
+
 public class ConnectionHolder {
 	private Map<DataSource,Connection> map = new HashMap<DataSource, Connection>();
 	
@@ -13,7 +15,7 @@ public class ConnectionHolder {
 		Connection connection = map.get(dataSource);
 		try {
 			if (connection == null || connection.isClosed()) {
-				connection = (Connection) dataSource.getConnection();
+				connection = dataSource.getConnection();
 				map.put(dataSource, connection);
 			}
 		} catch (SQLException e) {

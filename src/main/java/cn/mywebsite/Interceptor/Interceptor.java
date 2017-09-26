@@ -1,4 +1,4 @@
-package cn.mywebsite.Interceptor.controller;
+package cn.mywebsite.Interceptor;
 
 import java.lang.reflect.Method;
 import java.util.LinkedHashSet;
@@ -27,8 +27,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class InterceptorController {
-	private static final Logger logger = Logger.getLogger(InterceptorController.class);
+public class Interceptor {
+	private static final Logger logger = Logger.getLogger(Interceptor.class);
 	
 	
 	@Value("${spring.profiles}")//注入配置文件

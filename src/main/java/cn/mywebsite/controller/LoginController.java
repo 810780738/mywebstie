@@ -26,6 +26,7 @@ public class LoginController {
 	public static Log logger = LogFactory.getLog(LoginController.class);
 	
 	
+	
 	@Autowired
 	private UserManage userManage;
 	/**
@@ -67,6 +68,7 @@ public class LoginController {
 		if (checkUser == true)
 			return new ModelAndView("index");
 		else
+			map.put("loginError", "用户名或密码");
 			map.put("userName", userName);
 			map.put("passWord", passWord);
 			return new ModelAndView("public/login");
