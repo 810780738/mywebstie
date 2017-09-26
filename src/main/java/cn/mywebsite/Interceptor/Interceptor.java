@@ -1,5 +1,6 @@
 package cn.mywebsite.Interceptor;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.Null;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -69,6 +71,12 @@ public class Interceptor {
 					if (!isLogin(request)) {
 						//未登录
 //						result = new JsonResult(ResultCode);
+						HttpServletResponse response = (HttpServletResponse) arg;
+						try {
+							response.sendRedirect("192.168.1.104:8088/login");
+						} catch (IOException e) {
+							logger.error("response重定向异常",e);
+						}
 					}
 				}
 				
@@ -99,8 +107,9 @@ public class Interceptor {
 	
 	
 	
-	
+
 	public boolean isLoginRequired(Method method) {
+		//判断是否是生产环境
 		if (!evn.equals("prod")) {
 			return false;
 		}
@@ -112,9 +121,13 @@ public class Interceptor {
 		return result;
 	}
 	
-	//判断是否已经登陆 （待完善）
+	//判断是否已经登陆 
 	public boolean isLogin(HttpServletRequest request){
-		
+		Object attribute = request.getAttribute("userInfo");
+		if (attribute == null || !(attribute instanceof String)){
+			logger.info("用户未登录");
+			return false;
+		}
 		return true;
 	}
 	

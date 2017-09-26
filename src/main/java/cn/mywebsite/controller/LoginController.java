@@ -64,7 +64,7 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public ModelAndView checkLogin(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,  ModelMap map,HttpSession session){
-		boolean checkUser = userManage.checkUser(new UserInfo(userName,passWord));
+		boolean checkUser = userManage.checkUser(new UserInfo(userName,passWord),session);
 		if (checkUser == true)
 			return new ModelAndView("index");
 		else

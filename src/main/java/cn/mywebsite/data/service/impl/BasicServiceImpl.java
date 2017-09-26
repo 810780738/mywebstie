@@ -34,8 +34,8 @@ public class BasicServiceImpl implements BasicService {
 	}
 
 	@Override
-	public <T> int insertUser(Class<T> clazz, String sql, Object... args) {
-		return jdbcTemplet.update(sql, args);
+	public <T> int insertUser(Class<T> clazz, String sql, int[] types,Object... args) {
+		return jdbcTemplet.update(sql, args,types);
 	}
 
 	@Override
@@ -46,6 +46,11 @@ public class BasicServiceImpl implements BasicService {
 	@Override
 	public <T> T findById(Class<T> clazz, String sql, Object id) {
 		return jdbcTemplet.queryForObject(sql, new Object[] { id }, clazz);
+	}
+
+	@Override
+	public <T> T findForObject(String sql,Class<T> clazz,int[] types, Object... args) {
+		return jdbcTemplet.queryForObject(sql, args,types,clazz);
 	}
 
 }

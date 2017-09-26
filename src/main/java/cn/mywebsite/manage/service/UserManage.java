@@ -4,6 +4,8 @@ package cn.mywebsite.manage.service;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import cn.mywebsite.domain.UserInfo;
@@ -16,8 +18,9 @@ public interface UserManage {
 	/**
 	 * 用户校验
 	 * @param userInfo
+	 * @param session 
 	 * @return
 	 */
-	public boolean checkUser(UserInfo userInfo);
+	public boolean checkUser(UserInfo userInfo, HttpSession session);
 	
 }

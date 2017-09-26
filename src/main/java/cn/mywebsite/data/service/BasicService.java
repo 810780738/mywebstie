@@ -24,7 +24,7 @@ public interface BasicService {
 	 * @param args
 	 * @return
 	 */
-	public <T> int insertUser(Class<T> clazz,String sql,Object... args);
+	public <T> int insertUser(Class<T> clazz,String sql,int[] types,Object... args);
 	
 	/**
 	 * MethodDescription:通用查询方法
@@ -47,4 +47,16 @@ public interface BasicService {
 	 * @return
 	 */
 	public <T> T findById(Class<T> clazz,String sql,Object id);
+	
+	/**
+	 * MethodDescription:返回一个查询对象
+	 * @author 朱守明
+	 * @Data 2017年9月26日 下午5:33:02
+	 * @param sql
+	 * @param clazz
+	 * @param types
+	 * @param args
+	 * @return 实体
+	 */
+	public <T> T findForObject(String sql,Class<T> clazz,int[] types,Object...args);
 }

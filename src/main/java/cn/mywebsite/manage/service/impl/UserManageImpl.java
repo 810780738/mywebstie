@@ -1,9 +1,12 @@
 package cn.mywebsite.manage.service.impl;
 
 
+import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,35 +32,38 @@ public class UserManageImpl implements UserManage{
 	@Transactional(transactionManager = "mysqlTS",rollbackFor = Exception.class)
 	@Override
 	public int addUser(Map<String, String> map) {
-//		UserInfo userInfo = new UserInfo();
-		try {
-			basicService.add(null, null);
-			int i = 1/0;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-//		if (map.size() != 0 && map != null) {
-//			map.remove("form-repeat-password");
-//			map.put("CreateTime", TimeUtil.easyTime());
-//			map.put("user_id", UUID.randomUUID().toString());
-//			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
-//			//反射将list中的数据重新放到userinfo中
-//			return  basicService.insertUser(UserInfo.class, sql, ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(userInfo, map)).toArray());
+		UserInfo userInfo = new UserInfo();
+//		try {
+//			basicService.add(null, null);
+//			int i = 1/0;
+//		} catch (Exception e) {
+//			e.printStackTrace();
 //		}
+		
+		
+		if (map.size() != 0 && map != null) {
+			map.remove("form-repeat-password");
+			map.put("CreateTime", TimeUtil.easyTime());
+			map.put("user_id", UUID.randomUUID().toString());
+			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
+			int[] types = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,};
+			//反射将list中的数据重新放到userinfo中
+			return  basicService.insertUser(UserInfo.class, sql, types,ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(userInfo, map)).toArray());
+		}
 		return 0;
 	}
 	@Override
-	public boolean checkUser(UserInfo userInfo) {
+	public boolean checkUser(UserInfo userInfo,HttpSession session) {
 		String sql = "select * from userinfo where loginname=? and userpassword=?;";
-		List<Map<String, Object>> baseSelect = null;
+		int[] types = {Types.VARCHAR,Types.VARCHAR};
+		UserInfo userInfos = null;
 		try {
-			baseSelect = basicService.baseSelect(UserInfo.class, sql, ClazzGetMethod.getClazz(userInfo).toArray());
+			userInfos = basicService.findForObject(sql, UserInfo.class, types, ClazzGetMethod.getClazz(userInfo).toArray());
+			session.setAttribute("userInfo", userInfos);
 		} catch (Exception e) {
 			logger.error("校验登录出错",e);
 		}
-		if (baseSelect != null && baseSelect.size() == 1)
+		if (userInfos != null)
 			return true;
 		return false;
 	}
