@@ -29,12 +29,15 @@ CREATE TABLE `userinfo` (
   `address` varchar(128) DEFAULT NULL,
   `age` varchar(6) DEFAULT NULL,
   `createtime` varchar(32) DEFAULT NULL,
+  `loginname` varchar(32) DEFAULT NULL,
+  `aboutuser` varchar(1024) DEFAULT NULL,
+  `Email` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`userinfo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `userinfo` */
 
-insert  into `userinfo`(`userinfo_id`,`username`,`userpassword`,`sex`,`address`,`age`,`createtime`) values ('0ee8cc7e-3c47-46fa-b5b1-68ec315f66f9','小猪','1234','男','安徽','23','2017-09-19 17:38:38'),('6c201dd2-cae3-4e6a-ab15-ce9857678644','小猪','1234','男','安徽','23','2017-09-19 17:33:57'),('6e656557-4c5a-4a13-b24e-278b22e91cff','小猪','1234','男','安徽','23','2017-09-19 17:34:28'),('e9d89211-eb1b-4911-91b3-1e8542344e51','小猪','1234','男','安徽','23','2017-09-19 17:34:13'),('f21aa899-26d7-41ae-98db-91485d72fcb3','小猪','1234','男','安徽','23','2017-09-19 17:26:33');
+insert  into `userinfo`(`userinfo_id`,`username`,`userpassword`,`sex`,`address`,`age`,`createtime`,`loginname`,`aboutuser`,`Email`) values ('0ee8cc7e-3c47-46fa-b5b1-68ec315f66f9','小狗','4321','男','安徽','23','2017-09-19 17:38:38',NULL,NULL,NULL),('5447857a-d7c3-4aa8-9db1-a7522bea0a23','小猪','1234','男','23','安徽','2017-09-20 10:39:47',NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
