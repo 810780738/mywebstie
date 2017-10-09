@@ -2,7 +2,6 @@ package cn.mywebsite.manage.service.impl;
 
 
 import java.sql.Types;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,8 +37,8 @@ public class UserManageImpl implements UserManage{
 			map.put("CreateTime", TimeUtil.easyTime());
 			map.put("user_id", UUID.randomUUID().toString());
 			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
-			int[] types = {java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,
-					java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR};
+			int[] types = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,
+					Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
 			//反射将list中的数据重新放到userinfo中
 			return  basicService.insertUser(UserInfo.class, sql, types,ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(userInfo, map)).toArray());
 		}
@@ -48,7 +47,7 @@ public class UserManageImpl implements UserManage{
 	@Override
 	public boolean checkUser(UserInfo userInfo,HttpSession session) {
 		String sql = "select * from userinfo where loginname=? and userpassword=?;";
-		int[] types = {java.sql.Types.VARCHAR,java.sql.Types.VARCHAR};
+		int[] types = {Types.VARCHAR,Types.VARCHAR};
 		UserInfo userInfos = null;
 		try {
 			userInfos = basicService.findForObject(sql, UserInfo.class, types, ClazzGetMethod.getClazz(userInfo).toArray());

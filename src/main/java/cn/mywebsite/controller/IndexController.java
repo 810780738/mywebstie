@@ -18,7 +18,7 @@ public class IndexController {
 	@RequestMapping("/addUser")
 	public String index(){
 		int addUser = userManage.addUser(null);
-		return "";
+		return Integer.toBinaryString(addUser);
 	}
 	
 }
