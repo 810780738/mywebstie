@@ -32,11 +32,7 @@ public class Application implements EmbeddedServletContainerCustomizer {
 	@Configuration
 	static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 		public void addInterceptors(InterceptorRegistry registry) {
-			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**")
-					.excludePathPatterns("/login/userLogin").excludePathPatterns("/login/checkLogin")
-					.excludePathPatterns("/slaverCrwalTask/startSlaverTask")
-					.excludePathPatterns("/slaverAnalyzeTask/startAnalyzeSlaverTask")
-					.excludePathPatterns("/slaverCrwalTask/deleteRepatFile");
+			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**").excludePathPatterns("/login");
 			super.addInterceptors(registry);
 		}
 	}
