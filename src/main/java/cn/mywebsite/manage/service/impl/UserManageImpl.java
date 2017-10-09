@@ -33,20 +33,13 @@ public class UserManageImpl implements UserManage{
 	@Override
 	public int addUser(Map<String, String> map) {
 		UserInfo userInfo = new UserInfo();
-//		try {
-//			basicService.add(null, null);
-//			int i = 1/0;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		
-		
 		if (map.size() != 0 && map != null) {
 			map.remove("form-repeat-password");
 			map.put("CreateTime", TimeUtil.easyTime());
 			map.put("user_id", UUID.randomUUID().toString());
 			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
-			int[] types = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,};
+			int[] types = {java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,
+					java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR};
 			//反射将list中的数据重新放到userinfo中
 			return  basicService.insertUser(UserInfo.class, sql, types,ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(userInfo, map)).toArray());
 		}
@@ -55,7 +48,7 @@ public class UserManageImpl implements UserManage{
 	@Override
 	public boolean checkUser(UserInfo userInfo,HttpSession session) {
 		String sql = "select * from userinfo where loginname=? and userpassword=?;";
-		int[] types = {Types.VARCHAR,Types.VARCHAR};
+		int[] types = {java.sql.Types.VARCHAR,java.sql.Types.VARCHAR};
 		UserInfo userInfos = null;
 		try {
 			userInfos = basicService.findForObject(sql, UserInfo.class, types, ClazzGetMethod.getClazz(userInfo).toArray());

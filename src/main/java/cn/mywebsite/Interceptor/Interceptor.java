@@ -73,7 +73,7 @@ public class Interceptor {
 //						result = new JsonResult(ResultCode);
 						HttpServletResponse response = (HttpServletResponse) arg;
 						try {
-							response.sendRedirect("192.168.1.104:8088/login");
+							response.sendRedirect("/login");
 						} catch (IOException e) {
 							logger.error("response重定向异常",e);
 						}
