@@ -13,7 +13,7 @@ import cn.mywebsite.domain.UserInfo;
 @Service
 public interface UserManage {
 	//添加用户
-	public int addUser(Map<String, String> map);
+	public int addUser(Map<String, Object> map);
 	
 	/**
 	 * 用户校验

@@ -35,8 +35,8 @@ public class MapValue {
 		return mapKey;
 	}
 	
-	public final static <T> Map<String,String>  getArrayValue(Map<String, String[]> parameterMap){
-		Map<String,String> map = new HashMap<String,String>();
+	public final static <T> Map<String,Object>  getArrayValue(Map<String, String[]> parameterMap){
+		Map<String,Object> map = new HashMap<String,Object>();
 		for (String key : parameterMap.keySet()) {
 			String[] arrays = parameterMap.get(key);
 			if(arrays.length <= 1) {

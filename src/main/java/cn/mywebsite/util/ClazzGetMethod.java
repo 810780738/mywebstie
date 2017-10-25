@@ -66,7 +66,7 @@ public class ClazzGetMethod {
 		return null;
 	}
 
-	public static <T> Object setMethodValue(Object bean, Map<String, String> map) {
+	public static <T> Object setMethodValue(Object bean, Map<String, Object> map) {
 		Class<? extends Object> clazz = bean.getClass();
 
 		Method[] methods = clazz.getDeclaredMethods();// 获取所有的方法
@@ -80,7 +80,7 @@ public class ClazzGetMethod {
 				if (!checkSetMethod(methods, fieldName))
 					continue;
 				Method method = clazz.getMethod(fieldName, field.getType());
-				String value = map.get(field.getName());
+				String value = (String) map.get(field.getName());
 				if (value == null && "".trim().equalsIgnoreCase(value))
 					continue;
 				method.invoke(bean, value);

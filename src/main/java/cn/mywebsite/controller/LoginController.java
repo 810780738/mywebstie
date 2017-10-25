@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.mywebsite.domain.UserInfo;
+import cn.mywebsite.exception.SQLException;
 import cn.mywebsite.manage.service.UserManage;
 import cn.mywebsite.util.GetIpAddress;
 import cn.mywebsite.util.MapValue;
+import cn.mywebsite.util.StatusRecord;
 
 
 
@@ -46,20 +48,22 @@ public class LoginController {
 	 * @author 朱守明
 	 * @Data 2017年9月8日 下午3:42:38
 	 * @return
+	 * @throws SQLException 
 	 */
 	@RequestMapping("/register")
-	public ModelAndView register(HttpServletRequest request){
-		Map<String, String[]> parameterMap = request.getParameterMap();
-		Map<String, String> arrayValue = MapValue.getArrayValue(parameterMap);
-		int addUser = userManage.addUser(arrayValue);
-		if (addUser == 1) {
+	public ModelAndView register(HttpServletRequest request) throws SQLException{
+		Map<String, Object> arrayValue = MapValue.getArrayValue(request.getParameterMap());
+		int addUser = 0;
+		try {
+			addUser = userManage.addUser(arrayValue);
+		} catch (Exception e) {
+			throw new SQLException("添加用户发生异常："+e);
+		}
+		if (addUser == StatusRecord.INSERT_SUCCESS) {
 			return new ModelAndView("index");
-		} else if (addUser != 1) {
-			System.err.println("插入数据出现异常");
 		}else{
 			return new ModelAndView("public/register");
 		}
-		return new ModelAndView("public/register");
 	}
 	
 	

@@ -3,7 +3,7 @@ package cn.mywebsite.domain;
 
 public class UserInfo {
 	
-	private String user_id;
+	private String userinfo_id;
 	private String userName;
 	private String loginname;
 	private String email;
@@ -67,31 +67,21 @@ public class UserInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getUser_id() {
-		return user_id;
+	
+	
+	public String getUserinfo_id() {
+		return userinfo_id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserinfo_id(String userinfo_id) {
+		this.userinfo_id = userinfo_id;
 	}
-	public UserInfo(String user_id, String userName, String userPassword, String sex, String age, String address,
-			String createTime) {
-		super();
-		this.user_id = user_id;
-		this.userName = userName;
-		this.userPassword = userPassword;
-		this.sex = sex;
-		this.age = age;
-		this.address = address;
-		CreateTime = createTime;
-	}
+	
 	@Override
 	public String toString() {
-		return "UserInfo [user_id=" + user_id + ", userName=" + userName + ", userPassword=" + userPassword + ", sex="
-				+ sex + ", age=" + age + ", address=" + address + ", CreateTime=" + CreateTime + "]";
+		return "UserInfo [userinfo_id=" + userinfo_id + ", userName=" + userName + ", loginname=" + loginname
+				+ ", email=" + email + ", aboutuser=" + aboutuser + ", userPassword=" + userPassword + ", sex=" + sex
+				+ ", age=" + age + ", address=" + address + ", CreateTime=" + CreateTime + "]";
 	}
-	
-	
-	
 	public UserInfo(String userName, String userPassword, String sex, String age, String address) {
 		super();
 		this.userName = userName;
