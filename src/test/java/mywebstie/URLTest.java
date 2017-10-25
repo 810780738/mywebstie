@@ -1,8 +1,11 @@
 package mywebstie;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -10,6 +13,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -28,7 +32,7 @@ public class URLTest {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String time = simpleDateFormat.format(new Date());
 //		String URL = ("http://api.goseek.cn/Tools/holiday?date="+time).trim();
-		String URL = "http://www.divcss5.com/rumen/r544.shtml";
+		String URL = "https://www.baidu.com";
 		
 		
 		BrowserVersion[] versions = { BrowserVersion.CHROME, BrowserVersion.FIREFOX_38,
@@ -93,4 +97,24 @@ public class URLTest {
 			logger.error(e);
 		}
 	}
+	
+	private static BasicDataSource MYSQL_DATASOURCE_TYPE=null;
+	
+	
+	@Test
+	public void test() throws SQLException{
+		Connection connection = MYSQL_DATASOURCE_TYPE.getConnection();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

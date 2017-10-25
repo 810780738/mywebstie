@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.mywebsite.domain.UserInfo;
 import cn.mywebsite.manage.service.UserManage;
+import cn.mywebsite.util.GetIpAddress;
 import cn.mywebsite.util.MapValue;
 
 
@@ -63,7 +64,9 @@ public class LoginController {
 	
 	
 	@RequestMapping("/checkLogin")
-	public ModelAndView checkLogin(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,  ModelMap map,HttpSession session){
+	public ModelAndView checkLogin(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,  ModelMap map,HttpSession session,HttpServletRequest request){
+		String ipAddress = GetIpAddress.getIpAddress(request);
+		System.out.println("获取客户端IP地址："+ipAddress);
 		boolean checkUser = userManage.checkUser(new UserInfo(userName,passWord),session);
 		if (checkUser == true)
 			return new ModelAndView("index");

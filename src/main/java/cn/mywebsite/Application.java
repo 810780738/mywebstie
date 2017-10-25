@@ -28,13 +28,14 @@ public class Application implements EmbeddedServletContainerCustomizer {
 	public void customize(ConfigurableEmbeddedServletContainer container) {
 		container.setPort(8088);// 修改内置tomcat启动端口
 	}
-
-	@Configuration
-	static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
-		public void addInterceptors(InterceptorRegistry registry) {
-			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**").excludePathPatterns("/login");
-			super.addInterceptors(registry);
-		}
-	}
+		
+//	@Configuration
+//	static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+//		public void addInterceptors(InterceptorRegistry registry) {
+//			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**").excludePathPatterns("/login")
+//			.addPathPatterns("/index");
+//			super.addInterceptors(registry);
+//		}
+//	}
 
 }

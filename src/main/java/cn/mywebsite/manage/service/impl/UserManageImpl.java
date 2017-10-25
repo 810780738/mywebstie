@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.mywebsite.SQLContent.SQLContent;
 import cn.mywebsite.data.service.BasicService;
 import cn.mywebsite.domain.UserInfo;
 import cn.mywebsite.manage.service.UserManage;
@@ -36,9 +37,11 @@ public class UserManageImpl implements UserManage{
 			map.remove("form-repeat-password");
 			map.put("CreateTime", TimeUtil.easyTime());
 			map.put("user_id", UUID.randomUUID().toString());
-			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
-			int[] types = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,
-					Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
+//			String sql = "insert into userinfo (userinfo_id,username,loginname,Email,aboutuser,userpassword,createtime) values(?,?,?,?,?,?,?)";
+			String sql = SQLContent.User.INSERT_USER;
+//			int[] types = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,
+//					Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
+			int[] types = SQLContent.User.INSERT_USER_TYPES;
 			//反射将list中的数据重新放到userinfo中
 			return  basicService.insertUser(UserInfo.class, sql, types,ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(userInfo, map)).toArray());
 		}
@@ -46,11 +49,11 @@ public class UserManageImpl implements UserManage{
 	}
 	@Override
 	public boolean checkUser(UserInfo userInfo,HttpSession session) {
-		String sql = "select * from userinfo where loginname=? and userpassword=?;";
-		int[] types = {Types.VARCHAR,Types.VARCHAR};
+//		String sql = "select * from userinfo where loginname=? and userpassword=?";
+//		int[] types = {Types.VARCHAR,Types.VARCHAR};
 		UserInfo userInfos = null;
 		try {
-			userInfos = basicService.findForObject(sql, UserInfo.class, types, ClazzGetMethod.getClazz(userInfo).toArray());
+			userInfos = basicService.findForObject(SQLContent.User.CHECK_USER, UserInfo.class, SQLContent.User.CHECK_USER_TYPES, ClazzGetMethod.getClazz(userInfo).toArray());
 			session.setAttribute("userInfo", userInfos);
 		} catch (Exception e) {
 			logger.error("校验登录出错",e);

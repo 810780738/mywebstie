@@ -25,7 +25,7 @@
 			<label class="lbl-3"> </label>
 		</div>
 	<div class="avtar"><img src="images/avtar.png" /></div>
-	<form action="/checkLogin" method="post">
+	<form action="/checkLogin" method="post"  autocomplete="off">
 		<input type="text" class="text" value="${userName}" name="userName" placeholder="请输入用户名">
 		<input type="password" value="${passWord}" name="passWord" placeholder="请输入密码">
 		</br>
@@ -34,7 +34,7 @@
 			<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/register" style="text-align: right;color:white;">注册?</a>
 		</div>
 		<div class="signin">
-			<input type="submit" value="Login" >
+			<input type="submit" value="登录">
 		</div>
 	</form>
 </div>
