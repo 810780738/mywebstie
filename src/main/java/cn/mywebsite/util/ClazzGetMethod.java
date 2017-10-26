@@ -81,8 +81,7 @@ public class ClazzGetMethod {
 					continue;
 				Method method = clazz.getMethod(fieldName, field.getType());
 				String value = (String) map.get(field.getName());
-				if (value == null && "".trim().equalsIgnoreCase(value))
-					continue;
+				if (value == null && "".trim().equalsIgnoreCase(value))continue;
 				method.invoke(bean, value);
 			}
 
