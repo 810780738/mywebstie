@@ -3,7 +3,7 @@ package cn.mywebsite.util;
 public class StringUtil {
 	
 	/**
-	 * MethodDescription:判断字符串是否为空
+	 * MethodDescription:judge string whether is null 
 	 * @author 朱守明
 	 * @Data 2017年10月26日 下午5:30:35
 	 * @param string
