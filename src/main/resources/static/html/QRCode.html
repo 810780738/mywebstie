@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="gb2312" />
+</head>
+<body>
+<img src="new.png" id="DemoImg" border="0"> 
+<a href="#" id="DemoImg" border="0" onclick="SaveAs5(this.src)"> 点击这里下载图片 </a>
+</body>
+<script> 
+function SaveAs5(imgURL) 
+{ 
+var oPop = window.open(imgURL,"","width=1, height=1, top=5000, left=5000"); 
+for(; oPop.document.readyState != "complete"; ) 
+{ 
+if (oPop.document.readyState == "complete")break; 
+} 
+oPop.document.execCommand("SaveAs"); 
+oPop.close(); 
+} 
+</script> 
+</script> 
+</html>
+<!-- published at 2017/10/11 8:59:56By dxycms qq:461478385  -->
