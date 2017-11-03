@@ -5,8 +5,8 @@
 <script src="/js/jquery-2.1.0.js"></script>
 </head>
 <body>
-<img src="/download/downloadQRCode" border="0"> 
-<a href="/download/downloadQRCode" id="DemoImg" border="0">点击下载文件 </a>
+<img src="/createQRCode/downloadQRCode" border="0"> 
+<a href="/createQRCode/downloadQRCode" id="DemoImg" border="0">点击下载文件 </a>
 </body>
 <script> 
 
