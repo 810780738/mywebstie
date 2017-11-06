@@ -19,7 +19,7 @@ public class BasicServiceImpl implements BasicService {
 
 	public static Log logger = LogFactory.getLog(BasicServiceImpl.class);
 
-	@Resource(name = "mysqlJT")
+//	@Resource(name = "mysqlJT")
 	private JdbcTemplate jdbcTemplet;
 
 	@Override

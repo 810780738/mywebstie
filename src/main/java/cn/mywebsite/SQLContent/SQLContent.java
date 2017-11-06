@@ -20,5 +20,7 @@ public final class SQLContent {
 		public final static String CHECK_USER = "SELECT * FROM USERINFO WHERE LOGINNAME=? AND USERPASSWORD=?";
 		public final static int[] CHECK_USER_TYPES = {Types.VARCHAR,Types.VARCHAR};
 		
+		public final static String FINDUSERBYID = "SELECT * FROM USERINFO WHERE USERINFO_ID=#{ID}";
+		
 	}
 }
