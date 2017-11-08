@@ -32,6 +32,7 @@ public class LoginController {
 	
 	@Autowired
 	private UserManage userManage;
+	
 	/**
 	 * MethodDescription:跳转到登录页面
 	 * @author 朱守明
@@ -51,14 +52,9 @@ public class LoginController {
 	 * @throws SQLException 
 	 */
 	@RequestMapping("/register")
-	public ModelAndView register(HttpServletRequest request) throws SQLException{
+	public ModelAndView register(HttpServletRequest request){
 		Map<String, Object> arrayValue = MapValue.getArrayValue(request.getParameterMap());
-		int addUser = 0;
-		try {
-			addUser = userManage.addUser(arrayValue);
-		} catch (Exception e) {
-			throw new SQLException("添加用户发生异常："+e);
-		}
+		int	addUser = userManage.addUser(arrayValue);
 		if (addUser == StatusRecord.INSERT_SUCCESS) {
 			return new ModelAndView("index");
 		}else{
@@ -66,6 +62,10 @@ public class LoginController {
 		}
 	}
 	
+	@RequestMapping("/toRegister")
+	public ModelAndView toRegister(){
+		return new ModelAndView("public/register");
+	}
 	
 	@RequestMapping("/checkLogin")
 	public ModelAndView checkLogin(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,  ModelMap map,HttpSession session,HttpServletRequest request){

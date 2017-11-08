@@ -31,7 +31,7 @@
 		</br>
 		<span style="color:red;">${loginError}</span>
 		<div>
-			<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/register" style="text-align: right;color:white;">注册?</a>
+			<a href="" style="text-align: left;color:white;">忘记密码?</a><a href="/toRegister" style="text-align: right;color:white;">注册?</a>
 		</div>
 		<div class="signin">
 			<input type="submit" value="登录">

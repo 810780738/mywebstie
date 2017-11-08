@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.mywebsite.SQLContent.SQLContent;
 import cn.mywebsite.data.service.BasicService;
+import cn.mywebsite.data.service.BasicServiceDao;
 import cn.mywebsite.domain.UserInfo;
+import cn.mywebsite.exception.SQLException;
 import cn.mywebsite.manage.service.UserManage;
 import cn.mywebsite.util.ClazzGetMethod;
 import cn.mywebsite.util.StatusRecord;
@@ -29,9 +31,12 @@ public class UserManageImpl implements UserManage{
 	@Autowired
 	private BasicService basicService;
 	
+	@Autowired
+	private BasicServiceDao basicServiceDao;
+	
 	private UserInfo userInfos;
 	
-	@Transactional(transactionManager = "mysqlTS",rollbackFor = Exception.class)
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int addUser(Map<String, Object> map) {
 		if (map.size() != 0 && map != null) {
@@ -44,7 +49,13 @@ public class UserManageImpl implements UserManage{
 //					Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
 //			int[] types = SQLContent.User.INSERT_USER_TYPES;
 			//反射将list中的数据重新放到userinfo中
-			return  basicService.insertUser(UserInfo.class, SQLContent.User.INSERT_USER, SQLContent.User.INSERT_USER_TYPES,ClazzGetMethod.getClazz(ClazzGetMethod.setMethodValue(new UserInfo(), map)).toArray());
+			try {
+				basicServiceDao.addUser(map);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return 0;
 		}
 		return StatusRecord.INSERT_FAILURE;
 	}

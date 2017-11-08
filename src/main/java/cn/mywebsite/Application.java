@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 public class Application implements EmbeddedServletContainerCustomizer {
 
-	public static Log logger = LogFactory.getLog(Application.class);
+	private static Log logger = LogFactory.getLog(Application.class);
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
@@ -29,13 +29,13 @@ public class Application implements EmbeddedServletContainerCustomizer {
 		container.setPort(8088);// 修改内置tomcat启动端口
 	}
 		
-//	@Configuration
-//	public final static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
-//		public void addInterceptors(InterceptorRegistry registry) {
-//			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**").excludePathPatterns("/login")
-//			.excludePathPatterns("/index").excludePathPatterns("/checkLogin").excludePathPatterns("/register");
-//			super.addInterceptors(registry);
-//		}
-//	}
+	@Configuration
+	static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+		public void addInterceptors(InterceptorRegistry registry) {
+			registry.addInterceptor(new CheckInterceptor()).addPathPatterns("/**").excludePathPatterns("/login")
+			.excludePathPatterns("/index").excludePathPatterns("/checkLogin").excludePathPatterns("/register").excludePathPatterns("/toRegister");
+			super.addInterceptors(registry);
+		}
+	}
 
 }
