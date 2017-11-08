@@ -2,7 +2,6 @@ package cn.mywebsite.manage.service.impl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,7 +14,6 @@ import cn.mywebsite.data.service.BasicServiceDao;
 import cn.mywebsite.domain.UserInfo;
 import cn.mywebsite.exception.SQLException;
 import cn.mywebsite.manage.service.UserManageDao;
-import cn.mywebsite.util.TimeUtil;
 @Repository
 @Service
 public class UserManageDaoImpl implements UserManageDao {
@@ -29,9 +27,11 @@ public class UserManageDaoImpl implements UserManageDao {
 	@Transactional
 	@Override
 	public Map<String, UserInfo> findById(String id) {
+		@SuppressWarnings("unused")
 		Map<String, UserInfo> findById = null;
 		try {
 //			findById = userManageDao.findById(id);
+			@SuppressWarnings("unused")
 			Map<String, Object> findUserById = basicServiceDao.findUserById(id);
 		} catch (SQLException e) {
 			logger.error("根据id查找出错",e);
